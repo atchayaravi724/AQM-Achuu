@@ -1,0 +1,58 @@
+{
+  "rules": {
+    "aerosense": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["timestamp", "device_status"],
+      "temperature": {
+        ".validate": "newData.isNumber() && newData.val() >= -40 && newData.val() <= 125"
+      },
+      "humidity": {
+        ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+      },
+      "air_quality": {
+        ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 5000"
+      },
+      "timestamp": {
+        ".validate": "newData.isNumber()"
+      },
+      "device_status": {
+        ".validate": "newData.isString()"
+      },
+      "connection_mode": {
+        ".validate": "newData.isString()"
+      },
+      "mpu_connected": {
+        ".validate": "newData.isBoolean()"
+      },
+      "motion": {
+        ".validate": "!newData.exists() || newData.hasChildren(['accel_x', 'accel_y', 'accel_z', 'gyro_x', 'gyro_y', 'gyro_z']) || newData.hasChildren(['accelX', 'accelY', 'accelZ', 'gyroX', 'gyroY', 'gyroZ'])"
+      },
+      "history": {
+        "$record_id": {
+          ".validate": "newData.hasChildren(['temperature', 'humidity', 'air_quality', 'timestamp'])",
+          "temperature": {
+            ".validate": "newData.isNumber() && newData.val() >= -40 && newData.val() <= 125"
+          },
+          "humidity": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+          },
+          "air_quality": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 5000"
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber()"
+          }
+        }
+      },
+      "incidents": {
+        "$incident_id": {
+          ".validate": "newData.hasChildren(['id', 'start_time', 'peak_temperature'])"
+        }
+      },
+      "ack": {
+        ".validate": "newData.hasChildren(['incident_id', 'acked_at'])"
+      }
+    }
+  }
+}

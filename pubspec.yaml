@@ -1,0 +1,77 @@
+name: aerion_aerosense
+description: Aerion AeroSense - Advanced Real-Time Environmental Monitoring System
+publish_to: 'none'
+version: 2.0.0+2
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # BLE
+  flutter_blue_plus: ^1.34.0
+
+  # Permissions
+  permission_handler: ^11.3.1
+
+  # Animations
+  flutter_animate: ^4.5.0
+
+  # Charts
+  fl_chart: ^0.68.0
+
+  # Fonts
+  google_fonts: ^6.2.1
+
+  # State Management
+  provider: ^6.1.2
+
+  # Haptic feedback
+  vibration: ^2.0.0
+
+  # PDF/CSV export
+  pdf: ^3.10.8
+  csv: ^6.0.0
+  path_provider: ^2.1.3
+  share_plus: ^12.0.2
+
+  # Utils
+  intl: ^0.19.0
+  collection: ^1.18.0
+
+  # Firebase
+  firebase_core: ^3.6.0
+  firebase_database: ^11.1.0
+
+  # HTTP (ESP32 Wi-Fi polling)
+  http: ^1.2.2
+
+  # Connectivity detection
+  connectivity_plus: ^6.0.5
+
+  # Local notifications (alerts)
+  flutter_local_notifications: ^17.2.2
+
+  # Device info
+  device_info_plus: ^10.1.2
+  firebase_auth: ^5.7.0
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: GoogleSans
+      fonts:
+        - asset: assets/fonts/GoogleSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/GoogleSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/GoogleSans-Bold.ttf
+          weight: 700
